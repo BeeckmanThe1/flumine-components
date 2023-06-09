@@ -1,45 +1,53 @@
-import {useState} from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/public/vite.svg'
 import './App.css'
 
-import {Button, Form, useForm} from './components/index'
-import {Input} from 'antd'
+import {Form, useForm} from './components/index'
+import {Input, Radio, Select, Tooltip, Typography, message, Card, Button } from 'antd'
 
 function App() {
-    const [count, setCount] = useState(0)
-    const {formValues, form, mergeInChange} = useForm(null)
+    const {formValues, form, mergeInChange, resetForm, clearForm} = useForm({a: 'lal'})
 
     return (
-        <>
-            <div>
-                <a href="https://vitejs.dev" target="_blank">
-                    <img src={viteLogo} className="logo" alt="Vite logo"/>
-                </a>
-                <a href="https://react.dev" target="_blank">
-                    <img src={reactLogo} className="logo react" alt="React logo"/>
-                </a>
-            </div>
-            <h1>Vite + React</h1>
-            <div className="card">
-                <Button onClick={() => setCount((prev) => prev + 1)}>
-                    count is {count}
-                </Button>
-                <p>
-                    Edit <code>src/App.tsx</code> and save to test HMR
-                </p>
-            </div>
-            <p className="read-the-docs">
-                Click on the Vite and React logos to learn more
-            </p>
-
+        <Card>
+            <Typography.Title>Epic form</Typography.Title>
             <Form form={form} mergeInChange={mergeInChange}>
                 <Form.Item name={'a'}>
-                    <Input />
+                    <Input/>
+                </Form.Item>
+                <Form.Item name={'b'}>
+                    <Radio.Group>
+                        <Radio value={'A'}>A - label</Radio>
+                        <Radio value={'B'}>B - label</Radio>
+                        <Radio value={'C'}>C - label</Radio>
+                    </Radio.Group>
+                </Form.Item>
+                <Form.Item name={'c'}>
+                    <Select allowClear>
+                        <Select.Option value={'A'}>
+                            <Tooltip title={'A - label'} placement="top">
+                                <Typography.Text ellipsis>A - label</Typography.Text>
+                            </Tooltip>
+                        </Select.Option>
+                        <Select.Option value={'B'}>
+                            <Tooltip title={'B - label'} placement="top">
+                                <Typography.Text ellipsis>B - label</Typography.Text>
+                            </Tooltip>
+                        </Select.Option>
+                        <Select.Option value={'C'}>
+                            <Tooltip title={'C - label'} placement="top">
+                                <Typography.Text ellipsis>C - label</Typography.Text>
+                            </Tooltip>
+                        </Select.Option>
+                    </Select>
                 </Form.Item>
             </Form>
-            {JSON.stringify(formValues, null,4)}
-        </>
+
+            <div>{JSON.stringify(formValues, null, 4)}</div>
+
+            <Button onClick={() => message.success(JSON.stringify(formValues, null, 4))}>Submit</Button>
+            <Button onClick={resetForm}>Reset</Button>
+            <Button onClick={clearForm}>Clear</Button>
+
+        </Card>
     )
 }
 

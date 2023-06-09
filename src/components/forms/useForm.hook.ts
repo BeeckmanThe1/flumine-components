@@ -1,21 +1,33 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import { Form } from 'antd'
 
-export const useForm = <T>(intialValues: T) => {
+export const useForm = <T>(initialValues: T) => {
     const [form] = Form.useForm<T>()
-    const [formValues, setFormValues] = useState<T>(intialValues)
+    const [formValues, setFormValues] = useState<T>(initialValues)
+    const [clearedValues, setClearedValues] = useState(null)
+
+    const resetForm = () => setFormValues(initialValues)
+    const clearForm = () => setFormValues(clearedValues)
 
     const mergeInChange = (values: Partial<T>) => {
         setFormValues(prev => ({ ...prev, ...values }))
     }
 
-    // problematic: if it's only a small part of the form, the other values won't be reset!
-    form.setFieldsValue(formValues as any)
+    form.setFieldsValue({...clearedValues, ...formValues})
+
+    useEffect(() => {
+        const allFields = Object.keys(form.getFieldsValue()) || []
+        const clearedValues = allFields.reduce((reduced, current) => ({...reduced, [current]: null}), {})
+
+        setClearedValues(clearedValues as T)
+    },[])
 
     return {
         form,
         formValues,
         mergeInChange,
-        setFormValues
+        setFormValues,
+        resetForm,
+        clearForm
     }
 }
