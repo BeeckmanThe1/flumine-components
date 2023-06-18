@@ -8,7 +8,7 @@ import {FieldMapper} from "./components/forms/Form.model";
 
 function App() {
 
-    const fields: [FieldMapper<'A'>[typeof formFields.INPUT], FieldMapper<'B'>[typeof formFields.INPUTB]] = [
+    const fields: [FieldMapper<'A'>[typeof formFields.INPUT], FieldMapper<'B'>[typeof formFields.INPUTB], FieldMapper<'C'>[typeof formFields.INPUTB]] = [
         {
             name: 'A',
             type: formFields.INPUT,
@@ -18,9 +18,20 @@ function App() {
             name: 'B',
             type: formFields.INPUTB,
             componentProps: {}
+        },
+        {
+            name: 'C',
+            type: formFields.INPUTB,
+            componentProps: {}
         }
     ]
-    const {formValues, form, mergeInChange, resetForm, clearForm} = useForm<InitialValuesFromFields<typeof fields>>({A: 'lel'})
+    const {
+        formValues,
+        form,
+        mergeInChange,
+        resetForm,
+        clearForm
+    } = useForm<InitialValuesFromFields<typeof fields>>({A: 'lel'})
 
     return (
         <Card>
