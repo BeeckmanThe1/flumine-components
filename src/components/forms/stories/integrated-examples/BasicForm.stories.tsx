@@ -24,7 +24,17 @@ const BasicTemplate: Story = () => {
             name: 'C',
             type: formFields.RADIO,
             componentProps: {
-                items: [{key: 'C1' , value: 'C1 - label'}, {key: 'C2' , value: 'C2 - label'}]
+                items: [{key: 'C1' , value: 'C1 - label', disabled: true}, {key: 'C2' , value: 'C2 - label', onChange: () => console.log('changee²')}],
+                onChange: () => console.log('changee')
+            }
+        },
+        {
+            name: 'D',
+            type: formFields.SELECT,
+            componentProps: {
+                items: [{key: 'D1' , value: 'D1 - label', disabled: true}, {key: 'D2' , value: 'D2 - label'}],
+                disabled: false,
+                allowClear: true
             }
         }
     ]
@@ -35,7 +45,7 @@ const BasicTemplate: Story = () => {
         mergeInChange,
         resetForm,
         clearForm
-    } = useForm<InitialValuesFromFields<typeof fields>>({A: 'lel'})
+    } = useForm<InitialValuesFromFields<typeof fields>>({C: 'C1', D: 'D1'})
 
     return <>
         <Space>
