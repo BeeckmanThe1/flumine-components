@@ -11,6 +11,7 @@ export const useForm = <T extends object>(initialValues: Partial<T>) => {
     const clearForm = () => setFormValues(clearedValues)
 
     const mergeInChange = (values: Partial<T>) => {
+        console.log('values!', values)
         setFormValues(prev => ({...prev, ...values}))
     }
 

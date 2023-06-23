@@ -3,8 +3,9 @@ import {FormInstance} from "antd";
 import {fieldsMapper, formFields} from "./fields/FieldsMapper";
 import {ReactComponentProps} from "../../utils/typing/ReactComponentProps.type";
 import {ValueOf} from "../../utils/typing/ValueOf.type";
+import {ResultMapper} from "./fields/ResultMapper";
 
-type FieldName = string
+export type FieldName = string
 export type FormProps<V> = {
     mergeInChange: (input: Partial<V>) => void,
     form: FormInstance<V>,
@@ -13,8 +14,7 @@ export type FormProps<V> = {
 export type PropsFromFieldType<T extends FormFields> = ReactComponentProps<FieldsMapper[T]>
 export type FormFields = ValueOf<typeof formFields>
 export type FieldsMapper = typeof fieldsMapper
-export type InitialValueFromType<T extends FormFields> = T extends typeof formFields.INPUT ? string : T extends typeof formFields.INPUTB ? number : never
-export type InitialValuesFromFields<T extends Field<FieldName>[]> = { [k in T[number] as k['name']]: InitialValueFromType<k['type']> }
+export type InitialValuesFromFields<T extends Field<FieldName>[]> = { [k in T[number] as k['name']]: ResultMapper[k['type']] }
 export type FieldMapper<N extends FieldName> = {
     [f in FormFields]: {
         name: N,
@@ -22,4 +22,5 @@ export type FieldMapper<N extends FieldName> = {
         componentProps: PropsFromFieldType<f>
     }
 }
+
 export type Field<N extends FieldName> = FieldMapper<N>[FormFields]

@@ -8,7 +8,6 @@ We intentionally limited the props we can pass through to maintain a consistent 
 Before considering extra props, please carefully evaluate if they are truly
 necessary. The allowed props are:
 *
-*  - allowClear
 *  - onBlur
 *  - onChange
 *  - onClick

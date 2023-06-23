@@ -1,5 +1,4 @@
 import './App.css'
-
 import {Form, useForm} from './components/index'
 import {Typography, message, Card, Button} from 'antd'
 import {formFields} from "./components/forms/fields/FieldsMapper";
@@ -8,22 +7,15 @@ import {FieldMapper} from "./components/forms/Form.model";
 
 function App() {
 
-    const fields: [FieldMapper<'A'>[typeof formFields.INPUT], FieldMapper<'B'>[typeof formFields.INPUTB], FieldMapper<'C'>[typeof formFields.INPUTB]] = [
-        {
-            name: 'A',
-            type: formFields.INPUT,
-            componentProps: {}
-        },
-        {
-            name: 'B',
-            type: formFields.INPUTB,
-            componentProps: {}
-        },
+    const fields: [FieldMapper<'C'>[typeof formFields.RADIO]] = [
         {
             name: 'C',
-            type: formFields.INPUTB,
-            componentProps: {}
-        }
+            type: formFields.RADIO,
+            componentProps: {
+                items: [{key: 'C.1', value: 'C.1 - label'}, {key: 'C.2', value: 'C.2 - label'}],
+                onChange: () => console.log('onChange!')
+            }
+        },
     ]
     const {
         formValues,
@@ -31,7 +23,7 @@ function App() {
         mergeInChange,
         resetForm,
         clearForm
-    } = useForm<InitialValuesFromFields<typeof fields>>({A: 'lel'})
+    } = useForm<InitialValuesFromFields<typeof fields>>({C: 'C.1'})
 
     return (
         <Card>
