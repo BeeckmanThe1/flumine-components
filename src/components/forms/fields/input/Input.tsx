@@ -13,7 +13,9 @@ necessary. The allowed props are:
 *  - onClick
 *  - type
 * */
-type InputProps = Pick<AntdInputProps, 'onBlur' | 'onChange' | 'onClick' | 'allowClear' | 'type' | 'placeholder'>
+type InputProps = Pick<AntdInputProps, 'onBlur' | 'onChange' | 'onClick' | 'allowClear' | 'placeholder'> & {
+    type?: 'password' | 'number'
+}
 
 type InputType = FC<InputProps> & {
     Group: typeof Group;

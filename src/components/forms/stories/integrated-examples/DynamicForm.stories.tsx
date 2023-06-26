@@ -8,7 +8,7 @@ import {Form} from "../../form";
 /************************ Form | dynamic fields ************************/
 
 const DynamicFormTemplate: Story = () => {
-    type Fields = [FieldMapper<'A'>[typeof formFields.INPUT], FieldMapper<'B'>[typeof formFields.INPUTB]]
+    type Fields = [FieldMapper<'A'>[typeof formFields.INPUT], FieldMapper<'B'>[typeof formFields.INPUT]]
     const fields: Fields  = [
         {
             name: 'A',
@@ -17,7 +17,7 @@ const DynamicFormTemplate: Story = () => {
         },
         {
             name: 'B',
-            type: formFields.INPUTB,
+            type: formFields.INPUT,
             componentProps: {}
         }
     ]

@@ -9,8 +9,8 @@ type RadioProps = {
 
 type RadioType = FC<RadioProps>
 
-export const Radio: RadioType = ({items, defaultValue, ...rest}) => {
-    return <AntdRadio.Group defaultValue={defaultValue} {...rest}>
+export const Radio: RadioType = ({items, ...rest}) => {
+    return <AntdRadio.Group {...rest}>
         {items?.map(i => <AntdRadio disabled={i?.disabled} onChange={i?.onChange} key={i?.key} value={i?.key}>{i?.value}</AntdRadio>)}
     </AntdRadio.Group>
 }

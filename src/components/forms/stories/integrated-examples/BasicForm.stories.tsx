@@ -6,35 +6,62 @@ import {Button, Card, message, Space} from "antd";
 import {Form} from "../../form";
 import {BasicFormFields} from "./form.models";
 
-/************************ Basic form ************************/
-
 const BasicTemplate: Story = () => {
-    const fields: BasicFormFields  = [
+    const fields: BasicFormFields = [
         {
             name: 'A',
             type: formFields.INPUT,
-            componentProps: {}
+            componentProps: {
+                type: 'password',
+                placeholder: 'password'
+            }
         },
         {
             name: 'B',
-            type: formFields.INPUTB,
-            componentProps: {}
+            type: formFields.INPUT,
+            componentProps: {
+                type: 'number',
+                placeholder: 'number'
+            }
         },
         {
             name: 'C',
             type: formFields.RADIO,
             componentProps: {
-                items: [{key: 'C1' , value: 'C1 - label', disabled: true}, {key: 'C2' , value: 'C2 - label', onChange: () => console.log('changee²')}],
-                onChange: () => console.log('changee')
+                items: [
+                    {
+                        key: 'C1',
+                        value: 'C1 - label',
+                        disabled: true
+                    },
+                    {
+                        key: 'C2',
+                        value: 'C2 - label'
+                    },
+                    {
+                        key: 'C3',
+                        value: 'C3 - label'
+                    }
+                ]
             }
         },
         {
             name: 'D',
             type: formFields.SELECT,
             componentProps: {
-                items: [{key: 'D1' , value: 'D1 - label', disabled: true}, {key: 'D2' , value: 'D2 - label'}],
+                items: [{key: 'D1', value: 'D1 - label', disabled: true}, {key: 'D2', value: 'D2 - label'}],
                 disabled: false,
                 allowClear: true
+            }
+        },
+        {
+            name: 'E',
+            type: formFields.SELECT,
+            componentProps: {
+                items: [{key: 'E1', value: 'E1 - label', disabled: true}, {key: 'E2', value: 'E2 - label'}],
+                disabled: false,
+                allowClear: true,
+                mode: 'multiple'
             }
         }
     ]
@@ -45,7 +72,7 @@ const BasicTemplate: Story = () => {
         mergeInChange,
         resetForm,
         clearForm
-    } = useForm<InitialValuesFromFields<typeof fields>>({C: 'C1', D: 'D1'})
+    } = useForm<InitialValuesFromFields<typeof fields>>({B: 'B1', C: 'C1', D: 'D1', E: ['E1', 'E2']})
 
     return <>
         <Space>
@@ -65,8 +92,8 @@ export const BasicForm = BasicTemplate.bind({});
 
 BasicForm.args = {};
 BasicForm.argTypes = {
-    mergeInChange: { table: { disable: true } },
-    form: { table: { disable: true } },
+    mergeInChange: {table: {disable: true}},
+    form: {table: {disable: true}},
 };
 
 const meta = {

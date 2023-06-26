@@ -5,7 +5,7 @@ import {BaseOptionType} from "rc-select/lib/Select";
 
 type SelectProps = {
     items: (KeyValue & Pick<BaseOptionType, 'disabled'>)[]
-} & Pick<AntdSelectProps, 'onFocus' | 'onBlur' | 'onChange' | 'allowClear' | 'disabled'>
+} & Pick<AntdSelectProps, 'onFocus' | 'onBlur' | 'onChange' | 'allowClear' | 'disabled' | 'mode'>
 
 type SelectType = FC<SelectProps>
 
