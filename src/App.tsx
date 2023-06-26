@@ -7,7 +7,8 @@ import {FieldMapper} from "./components/forms/Form.model";
 
 function App() {
 
-    const fields: [FieldMapper<'C'>[typeof formFields.RADIO]] = [
+    type AppFormFields = [FieldMapper<'C'>[typeof formFields.RADIO]]
+    const fields: AppFormFields  = [
         {
             name: 'C',
             type: formFields.RADIO,
@@ -23,7 +24,7 @@ function App() {
         mergeInChange,
         resetForm,
         clearForm
-    } = useForm<InitialValuesFromFields<typeof fields>>({C: 'C.1'})
+    } = useForm<InitialValuesFromFields<AppFormFields>>({C: 'C.1'})
 
     return (
         <Card>

@@ -1,30 +1,22 @@
 import {Meta, Story} from "@storybook/react";
 import {InitialValuesFromFields} from "../../Form.model";
-import {formFields} from "../../fields/FieldsMapper";
 import {useForm} from "../../useForm.hook";
 import {Button, Card, Space} from "antd";
 import {Form} from "../../form";
-import {CustomFormFields} from "./form.models";
+import {customFormFields} from "./basicFormFields";
 
 const CustomTemplate: Story = () => {
-    const fields: CustomFormFields = [
-        {
-            name: 'A',
-            type: formFields.CUSTOM,
-            componentProps: {}
-        }
-    ]
 
     const {
         formValues,
         form,
         mergeInChange,
-    } = useForm<InitialValuesFromFields<typeof fields>>({A: 10.0795})
+    } = useForm<InitialValuesFromFields<typeof customFormFields>>({A: 10.0795})
 
     return <>
         <Space>
             <Form form={form} mergeInChange={mergeInChange}>
-                {fields.map(f => <Form.Field {...f}/>)}
+                {customFormFields.map(f => <Form.Field {...f}/>)}
                 <div>
                     <Button onClick={() => mergeInChange({['A']: Math.PI})}>🥧</Button>
                 </div>
