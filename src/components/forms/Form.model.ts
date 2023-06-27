@@ -16,11 +16,14 @@ export type FormFields = ValueOf<typeof formFields>
 export type FieldsMapper = typeof fieldsMapper
 export type InitialValuesFromFields<T extends Field<FieldName>[]> = { [k in T[number] as k['name']]: ResultMapper[k['type']] }
 export type FieldMapper<N extends FieldName> = {
-    [f in FormFields]: {
+    [T in FormFields]: {
         name: N,
-        type: f,
-        componentProps: PropsFromFieldType<f>
+        type: T,
+        componentProps: PropsFromFieldType<T>
+        label?: string
     }
 }
 
 export type Field<N extends FieldName> = FieldMapper<N>[FormFields]
+
+

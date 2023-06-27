@@ -3,7 +3,7 @@ import {InitialValuesFromFields} from "../../Form.model";
 import {useForm} from "../../useForm.hook";
 import {Button, Card, message, Space} from "antd";
 import {Form} from "../../form";
-import {basicFormFields} from "./basicFormFields";
+import {formFieldValues} from "./formFieldValues";
 import {BasicFormFields} from "./form.models";
 
 const BasicTemplate: Story = () => {
@@ -13,12 +13,12 @@ const BasicTemplate: Story = () => {
         mergeInChange,
         resetForm,
         clearForm
-    } = useForm<InitialValuesFromFields<BasicFormFields>>({B: 'B1', C: 'C1', D: 'D1', E: ['E1', 'WHY IS THIS ALLOWED?']})
+    } = useForm<InitialValuesFromFields<BasicFormFields>>({A: '', B: '', C: 48, D: 'D1', E: 'E1', F: ['F1', 'WHY IS THIS ALLOWED?'], G: ['G1']})
 
     return <>
         <Space>
             <Form form={form} mergeInChange={mergeInChange}>
-                {basicFormFields.map(f => <Form.Field {...f}/>)}
+                {formFieldValues.map(f => <Form.Field {...f}/>)}
                 <div>
                     <Button onClick={() => message.success(JSON.stringify(formValues, null, 4))}>Submit</Button>
                     <Button onClick={resetForm}>Reset</Button>

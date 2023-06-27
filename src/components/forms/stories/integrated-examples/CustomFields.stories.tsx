@@ -3,7 +3,7 @@ import {InitialValuesFromFields} from "../../Form.model";
 import {useForm} from "../../useForm.hook";
 import {Button, Card, Space} from "antd";
 import {Form} from "../../form";
-import {customFormFields} from "./basicFormFields";
+import {customFormFields} from "./formFieldValues";
 
 const CustomTemplate: Story = () => {
 

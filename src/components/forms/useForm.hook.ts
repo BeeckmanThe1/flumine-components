@@ -19,9 +19,9 @@ export const useForm = <T extends object>(initialValues: Partial<T>) => {
 
     useEffect(() => {
         const allFields = Object.keys(form.getFieldsValue()) || []
-        const clearedValues = allFields.reduce((reduced, current) => ({...reduced, [current]: null}), {})
+        const newClearedValues = allFields.reduce((reduced, current) => ({...reduced, [current]: null}), {})
 
-        setClearedValues(clearedValues as T)
+        setClearedValues(newClearedValues as T)
     }, [])
 
     return {

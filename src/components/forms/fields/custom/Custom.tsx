@@ -1,16 +1,7 @@
 import {Button, Popover} from "antd";
-import {FC} from "react";
+import { FC } from 'react'
 
-type CustomProps = {
-    value?: number,
-    onChange?: any
-}
-
-type CustomType = FC<CustomProps>
-
-
-export const CustomField: CustomType = ({value, onChange}) => {
-
+export const CustomField: FC = ({value, onChange}) => {
     const handleRandomClick = () => onChange(Math.random() * 100)
     const handleDoublePIClick = () => onChange(2 * Math.PI)
     const explanation = 'This is the BD of Thomas Opdebeeck, he likes rolexes ⌚⌚⌚'

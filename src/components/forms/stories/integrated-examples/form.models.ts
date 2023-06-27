@@ -4,9 +4,11 @@ import {formFields} from "../../fields/FieldsMapper";
 export type BasicFormFields = [
     FieldMapper<'A'>[typeof formFields.INPUT],
     FieldMapper<'B'>[typeof formFields.INPUT],
-    FieldMapper<'C'>[typeof formFields.RADIO],
-    FieldMapper<'D'>[typeof formFields.SELECT],
+    FieldMapper<'C'>[typeof formFields.INPUT],
+    FieldMapper<'D'>[typeof formFields.RADIO],
     FieldMapper<'E'>[typeof formFields.SELECT],
+    FieldMapper<'F'>[typeof formFields.SELECT],
+    FieldMapper<'G'>[typeof formFields.CHECKBOX],
 ]
 
 export type CustomFormFields = [

@@ -1,30 +1,17 @@
 import {Input as AntdInput, InputProps as AntdInputProps} from 'antd'
 import {FC} from "react";
 
-const {Group, Search} = AntdInput
-
-/*
-We intentionally limited the props we can pass through to maintain a consistent visual aesthetic across all projects.
-Before considering extra props, please carefully evaluate if they are truly
-necessary. The allowed props are:
-*
-*  - onBlur
-*  - onChange
-*  - onClick
-*  - type
-* */
-type InputProps = Pick<AntdInputProps, 'onBlur' | 'onChange' | 'onClick' | 'allowClear' | 'placeholder'> & {
-    type?: 'password' | 'number'
+type InputPropsText =  {
+    type?: 'text' | 'password'
+}
+type InputPropsNumber = {
+    type?: 'number'
 }
 
-type InputType = FC<InputProps> & {
-    Group: typeof Group;
-    Search: typeof Search;
-};
+export type InputProps = (InputPropsText | InputPropsNumber) & Pick<AntdInputProps, 'onBlur' | 'onChange' | 'onClick' | 'allowClear' | 'placeholder'>
+
+type InputType = FC<InputProps>
 
 export const Input: InputType = (props) => {
     return <AntdInput {...props}/>
 }
-
-Input.Group = Group
-Input.Search = Search
