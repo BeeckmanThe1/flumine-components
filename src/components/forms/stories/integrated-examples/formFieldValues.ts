@@ -1,5 +1,5 @@
 import {BasicFormFields, CustomFormFields} from "./form.models";
-import {formFields} from "../../fields/FieldsMapper";
+import {formFields} from "../../fields/FieldComponentMapper";
 
 export const formFieldValues: BasicFormFields = [
     {

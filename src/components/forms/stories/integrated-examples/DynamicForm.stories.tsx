@@ -1,6 +1,6 @@
 import {Meta, Story} from "@storybook/react";
 import {FieldMapper, InitialValuesFromFields} from "../../Form.model";
-import {formFields} from "../../fields/FieldsMapper";
+import {formFields} from "../../fields/FieldComponentMapper";
 import {useForm} from "../../useForm.hook";
 import {Button, Card, message, Space} from "antd";
 import {Form} from "../../form";

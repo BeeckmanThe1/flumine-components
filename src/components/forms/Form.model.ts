@@ -1,9 +1,8 @@
 import {ReactNode} from "react";
 import {FormInstance} from "antd";
-import {fieldsMapper, formFields} from "./fields/FieldsMapper";
-import {ReactComponentProps} from "../../utils/typing/ReactComponentProps.type";
+import {FieldPropTypeMapper, formFields} from "./fields/FieldComponentMapper";
 import {ValueOf} from "../../utils/typing/ValueOf.type";
-import {ResultMapper} from "./fields/ResultMapper";
+import {FieldResultMapper} from "./fields/FieldComponentMapper";
 
 export type FieldName = string
 export type FormProps<V> = {
@@ -11,19 +10,22 @@ export type FormProps<V> = {
     form: FormInstance<V>,
     children: ReactNode
 }
-export type PropsFromFieldType<T extends FormFields> = ReactComponentProps<FieldsMapper[T]>
 export type FormFields = ValueOf<typeof formFields>
-export type FieldsMapper = typeof fieldsMapper
-export type InitialValuesFromFields<T extends Field<FieldName>[]> = { [k in T[number] as k['name']]: ResultMapper[k['type']] }
+export type InitialValuesFromFields<T extends Field<FieldName>[]> = { [k in T[number] as k['name']]: FieldResultMapper[k['type']] }
 export type FieldMapper<N extends FieldName> = {
     [T in FormFields]: {
         name: N,
         type: T,
-        componentProps: PropsFromFieldType<T>
+        componentProps: FieldPropTypeMapper[T]
         label?: string
     }
 }
 
 export type Field<N extends FieldName> = FieldMapper<N>[FormFields]
+
+export type FieldProps<T> = {
+    value: T
+    onChange: (x: T) => void
+}
 
 

@@ -1,7 +1,7 @@
 import './App.css'
 import {Form, useForm} from './components/index'
 import {Typography, message, Card, Button} from 'antd'
-import {formFields} from "./components/forms/fields/FieldsMapper";
+import {formFields} from "./components/forms/fields/FieldComponentMapper";
 import type {InitialValuesFromFields} from "./components/forms/Form.model";
 import {FieldMapper} from "./components/forms/Form.model";
 

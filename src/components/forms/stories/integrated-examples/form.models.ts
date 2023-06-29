@@ -1,5 +1,5 @@
 import {FieldMapper} from "../../Form.model";
-import {formFields} from "../../fields/FieldsMapper";
+import {formFields} from "../../fields/FieldComponentMapper";
 
 export type BasicFormFields = [
     FieldMapper<'A'>[typeof formFields.INPUT],

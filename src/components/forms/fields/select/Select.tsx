@@ -2,12 +2,13 @@ import {SelectProps as AntdSelectProps, Select as AntdSelect, Tooltip, Typograph
 import {FC} from "react";
 import {KeyValue} from "../../../../utils/typing/KeyValue.type";
 import {BaseOptionType} from "rc-select/lib/Select";
+import {FieldProps} from "../../Form.model";
 
-type SelectProps = {
+export type SelectProps = {
     items: (KeyValue & Pick<BaseOptionType, 'disabled'>)[]
 } & Pick<AntdSelectProps, 'onFocus' | 'onBlur' | 'allowClear' | 'disabled' | 'mode'>
 
-type SelectType = FC<SelectProps>
+type SelectType = FC<SelectProps & FieldProps<KeyValue['key'] | KeyValue['key'][]>>
 
 export const Select: SelectType = ({items, value, ...rest}) => {
     return <AntdSelect value={value ?? undefined} {...rest}>
