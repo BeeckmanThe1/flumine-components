@@ -11,7 +11,7 @@ export const CustomField: CustomFieldType = ({value, onChange}) => {
     const explanation = 'This is the BD of Thomas Opdebeeck, he likes rolexes ⌚⌚⌚'
 
     return <>
-    <h1>lalal</h1>
+            <h1>lalal!</h1>
         <Popover content={explanation} title="Subtle gift ideas">
             <span style={{cursor: 'pointer'}} onClick={handleRandomClick}>{'value?.toFixed(4)'}</span>
         </Popover>
