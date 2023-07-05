@@ -3,7 +3,7 @@ import {InitialValuesFromFields} from "../../Form.model";
 import {useForm} from "../../useForm.hook";
 import {Button, Card, Space} from "antd";
 import {Form} from "../../form";
-import {customFormFields} from "./formFieldValues";
+import {customFormFieldValues} from "./basicFormFieldValues";
 
 const CustomTemplate: Story = () => {
 
@@ -11,12 +11,12 @@ const CustomTemplate: Story = () => {
         formValues,
         form,
         mergeInChange,
-    } = useForm<InitialValuesFromFields<typeof customFormFields>>({A: 10.0795})
+    } = useForm<InitialValuesFromFields<typeof customFormFieldValues>>({A: 12.3456})
 
     return <>
         <Space>
             <Form form={form} mergeInChange={mergeInChange}>
-                {customFormFields.map(f => <Form.Field {...f}/>)}
+                {customFormFieldValues.map(f => <Form.Field {...f}/>)}
                 <div>
                     <Button onClick={() => mergeInChange({['A']: Math.PI})}>🥧</Button>
                 </div>
@@ -34,7 +34,7 @@ CustomForm.argTypes = {
 };
 
 const meta = {
-    title: 'Form/Custom field examples',
+    title: 'Form/Custom field example',
     component: Form,
 } as Meta<typeof Form>;
 export default meta

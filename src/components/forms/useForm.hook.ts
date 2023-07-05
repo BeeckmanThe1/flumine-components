@@ -7,11 +7,15 @@ export const useForm = <T extends object>(initialValues: Partial<T>) => {
     const [formValues, setFormValues] = useState<Partial<T>>(initialValues)
     const [clearedValues, setClearedValues] = useState<Partial<T>>({})
 
-    const resetForm = () => setFormValues(initialValues)
+    const resetForm = () => {
+        setFormValues(initialValues)
+        form.resetFields()
+    }
     const clearForm = () => setFormValues(clearedValues)
+    const allErrors = form.getFieldsError()?.flatMap(e => e?.errors)
+    const hasErrors = allErrors?.length > 0
 
     const mergeInChange = (values: Partial<T>) => {
-        console.log('values!', values)
         setFormValues(prev => ({...prev, ...values}))
     }
 
@@ -30,6 +34,7 @@ export const useForm = <T extends object>(initialValues: Partial<T>) => {
         mergeInChange,
         setFormValues,
         resetForm,
-        clearForm
+        clearForm,
+        hasErrors
     }
 }

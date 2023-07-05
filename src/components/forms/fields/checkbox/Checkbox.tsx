@@ -1,6 +1,6 @@
 import {
     CheckboxProps as AntdCheckboxProps,
-    Checkbox as AntdCheckbox
+    Checkbox as AntdCheckbox,
 } from 'antd'
 import {FC} from "react";
 import {KeyValue} from "../../../../utils/typing/KeyValue.type";

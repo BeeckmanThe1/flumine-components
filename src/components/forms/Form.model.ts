@@ -1,5 +1,5 @@
 import {ReactNode} from "react";
-import {FormInstance} from "antd";
+import {FormInstance, FormItemProps as AntdFormItemProps} from "antd";
 import {FieldPropTypeMapper, formFields} from "./fields/FieldComponentMapper";
 import {ValueOf} from "../../utils/typing/ValueOf.type";
 import {FieldResultMapper} from "./fields/FieldComponentMapper";
@@ -17,7 +17,7 @@ export type FieldMapper<N extends FieldName> = {
         name: N,
         type: T,
         componentProps: FieldPropTypeMapper[T]
-        label?: string
+        fieldProps: Pick<AntdFormItemProps, 'label' | 'rules'>
     }
 }
 

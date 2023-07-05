@@ -13,12 +13,14 @@ const DynamicFormTemplate: Story = () => {
         {
             name: 'A',
             type: formFields.INPUT,
-            componentProps: {placeholder: 'Type something...'}
+            componentProps: {placeholder: 'Type something...'},
+            fieldProps: {}
         },
         {
             name: 'B',
             type: formFields.INPUT,
-            componentProps: {}
+            componentProps: {},
+            fieldProps: {}
         }
     ]
 

@@ -9,4 +9,3 @@ export function Form<V>({children, mergeInChange, form}:FormProps<V>) {
 }
 
 Form.Field = Field
-// Form.Item = AntdForm.Item

@@ -12,13 +12,13 @@ export const formFields = {
     CUSTOM: 'CUSTOM',
     INPUT: 'INPUT',
     RADIO: 'RADIO',
-    SELECT: 'SELECT',       // <-> DROPDOWN
+    SELECT: 'SELECT',
 } as const
 
 export type FieldResultMapper = {
     [formFields.CHECKBOX]: KeyValue['key'][],
     [formFields.CUSTOM]: number,
-    [formFields.INPUT]: string | number,                        // depends on type
+    [formFields.INPUT]: string,
     [formFields.RADIO]: KeyValue['key'],
     [formFields.SELECT]: KeyValue['key'] | KeyValue['key'][],   // depends on multiple
 }

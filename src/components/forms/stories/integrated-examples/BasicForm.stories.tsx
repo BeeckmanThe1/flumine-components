@@ -3,7 +3,7 @@ import {InitialValuesFromFields} from "../../Form.model";
 import {useForm} from "../../useForm.hook";
 import {Button, Card, message, Space} from "antd";
 import {Form} from "../../form";
-import {formFieldValues} from "./formFieldValues";
+import {basicFormFieldValues} from "./basicFormFieldValues";
 import {BasicFormFields} from "./form.models";
 
 const BasicTemplate: Story = () => {
@@ -18,7 +18,7 @@ const BasicTemplate: Story = () => {
     return <>
         <Space>
             <Form form={form} mergeInChange={mergeInChange}>
-                {formFieldValues.map(f => <Form.Field {...f}/>)}
+                {basicFormFieldValues.map(f => <Form.Field {...f}/>)}
                 <div>
                     <Button onClick={() => message.success(JSON.stringify(formValues, null, 4))}>Submit</Button>
                     <Button onClick={resetForm}>Reset</Button>
@@ -38,7 +38,7 @@ BasicForm.argTypes = {
 };
 
 const meta = {
-    title: 'Form/Integrated examples',
+    title: 'Form/Integrated example',
     component: Form,
 } as Meta<typeof Form>;
 export default meta
