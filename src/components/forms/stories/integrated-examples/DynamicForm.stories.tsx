@@ -27,14 +27,14 @@ const DynamicFormTemplate: Story = () => {
     const {
         formValues,
         form,
-        mergeInChange,
+        onValuesChange,
         resetForm,
         clearForm
     } = useForm<InitialValuesFromFields<typeof fields>>({})
 
     return <>
         <Space>
-            <Form form={form} mergeInChange={mergeInChange}>
+            <Form form={form} onValuesChange={onValuesChange}>
                 <Form.Field {...fields[0]}/>
                 {formValues.A ? <Form.Field {...fields[1]}/> : null}
                 <div>

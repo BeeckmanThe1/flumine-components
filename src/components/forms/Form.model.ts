@@ -6,7 +6,7 @@ import {FieldResultMapper} from "./fields/FieldComponentMapper";
 
 export type FieldName = string
 export type FormProps<V> = {
-    mergeInChange: (input: Partial<V>) => void,
+    onValuesChange: (input: Partial<V>) => void,
     form: FormInstance<V>,
     children: ReactNode
 }

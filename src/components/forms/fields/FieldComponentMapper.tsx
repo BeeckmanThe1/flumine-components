@@ -7,6 +7,7 @@ import {FieldProps, FormFields} from "../Form.model";
 import {FC} from 'react'
 import {KeyValue} from "../../../utils/typing/KeyValue.type";
 
+// should come Data Model Attribute -> MGXTypes
 export const formFields = {
     CHECKBOX: 'CHECKBOX',
     CUSTOM: 'CUSTOM',

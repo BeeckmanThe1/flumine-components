@@ -15,7 +15,7 @@ export const CustomField: CustomFieldType = ({value, onChange}) => {
     const renderedValue = value || defaultValue
 
     return <Space direction={'horizontal'}>
-        <Popover content={explanation} title="Subtle gift ideas">
+        <Popover content={explanation} title="Random number">
             <span style={{cursor: 'pointer'}} onClick={handleRandomClick}>{renderedValue?.toFixed(4)}</span>
         </Popover>
         <Button onClick={handleDoublePIClick}>🥧🥧</Button>

@@ -21,7 +21,7 @@ function App() {
     const {
         formValues,
         form,
-        mergeInChange,
+        onValuesChange,
         resetForm,
         clearForm
     } = useForm<InitialValuesFromFields<AppFormFields>>({C: 'C.1'})
@@ -30,7 +30,7 @@ function App() {
         <Card>
             <Typography.Title>Epic form</Typography.Title>
 
-            <Form form={form} mergeInChange={mergeInChange}>
+            <Form form={form} onValuesChange={onValuesChange}>
                 {fields.map(f => <Form.Field {...f}/>)}
                 <div>
                     <Button onClick={() => message.success(JSON.stringify(formValues, null, 4))}>Submit</Button>

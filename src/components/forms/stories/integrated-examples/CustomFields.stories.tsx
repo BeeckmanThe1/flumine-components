@@ -10,15 +10,15 @@ const CustomTemplate: Story = () => {
     const {
         formValues,
         form,
-        mergeInChange,
+        onValuesChange,
     } = useForm<InitialValuesFromFields<typeof customFormFieldValues>>({A: 12.3456})
 
     return <>
         <Space>
-            <Form form={form} mergeInChange={mergeInChange}>
+            <Form form={form} onValuesChange={onValuesChange}>
                 {customFormFieldValues.map(f => <Form.Field {...f}/>)}
                 <div>
-                    <Button onClick={() => mergeInChange({['A']: Math.PI})}>🥧</Button>
+                    <Button onClick={() => onValuesChange({['A']: Math.PI})}>🥧</Button>
                 </div>
             </Form>
         </Space>

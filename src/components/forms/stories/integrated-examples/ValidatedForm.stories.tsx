@@ -10,7 +10,7 @@ const ValidatedFormTemplate: Story = () => {
     const {
         formValues,
         form,
-        mergeInChange,
+        onValuesChange,
         resetForm,
         clearForm,
         hasErrors
@@ -18,7 +18,7 @@ const ValidatedFormTemplate: Story = () => {
 
     return <>
         <Space>
-            <Form form={form} mergeInChange={mergeInChange}>
+            <Form form={form} onValuesChange={onValuesChange}>
                 {validatedFormFieldValues.map(f => <Form.Field {...f}/>)}
                 <Space size={'large'} direction={'vertical'}>
                     {hasErrors && <Alert type={'error'} message={'Form has errors'} />}

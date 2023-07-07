@@ -10,7 +10,7 @@ const DynamicDields2Template: Story = () => {
     const {
         formValues,
         form,
-        mergeInChange,
+        onValuesChange,
         resetForm,
         clearForm,
         hasErrors
@@ -22,9 +22,9 @@ const DynamicDields2Template: Story = () => {
         const currentFieldKey = Object.keys(values)[0] as keyof Partial<InitialValuesFromFields<DynamicValidationFormFields>>
         const validationDependenciesForFieldD = ['A', 'B', 'C']  as (keyof Partial<InitialValuesFromFields<DynamicValidationFormFields>>)[]
 
-        if(!validationDependenciesForFieldD.includes(currentFieldKey)) return mergeInChange(values)
+        if(!validationDependenciesForFieldD.includes(currentFieldKey)) return onValuesChange(values)
 
-        const currentValue = parseInt(values[currentFieldKey]  as string || '0')
+        const currentValue = parseInt(values[currentFieldKey] as string || '0')
 
         const aValue = parseInt(formValues?.['A'] || '0')
         const bValue = parseInt(formValues?.['B']  || '0')
@@ -43,12 +43,12 @@ const DynamicDields2Template: Story = () => {
                 dValue += aValue + bValue
                 break
         }
-        mergeInChange({...values, D: dValue.toString()})
+        onValuesChange({...values, D: dValue.toString()})
     }
 
     return <>
         <Space>
-            <Form form={form} mergeInChange={handleFormChange}>
+            <Form form={form} onValuesChange={handleFormChange}>
                 {formFields.map(f => <Form.Field {...f}/>)}
                 <Space size={'large'} direction={'vertical'}>
                     {hasErrors && <Alert type={'error'} message={'Form has errors'} />}

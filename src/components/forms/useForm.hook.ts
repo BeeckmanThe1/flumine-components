@@ -15,10 +15,6 @@ export const useForm = <T extends object>(initialValues: Partial<T>) => {
     const allErrors = form.getFieldsError()?.flatMap(e => e?.errors)
     const hasErrors = allErrors?.length > 0
 
-    const mergeInChange = (values: Partial<T>) => {
-        setFormValues(prev => ({...prev, ...values}))
-    }
-
     form.setFieldsValue({...clearedValues, ...formValues} as RecursivePartial<T>)
 
     useEffect(() => {
@@ -31,8 +27,8 @@ export const useForm = <T extends object>(initialValues: Partial<T>) => {
     return {
         form,
         formValues,
-        mergeInChange,
         setFormValues,
+        onValuesChange: (values: Partial<T>) => setFormValues(prev => ({...prev || {}, ...values || {}})),
         resetForm,
         clearForm,
         hasErrors

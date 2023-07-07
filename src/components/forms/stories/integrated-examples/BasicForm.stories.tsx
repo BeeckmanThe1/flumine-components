@@ -10,14 +10,14 @@ const BasicTemplate: Story = () => {
     const {
         formValues,
         form,
-        mergeInChange,
+        onValuesChange,
         resetForm,
         clearForm
-    } = useForm<InitialValuesFromFields<BasicFormFields>>({A: '', B: '', C: 48, D: 'D1', E: 'E1', F: ['F1', 'WHY IS THIS ALLOWED?'], G: ['G1']})
+    } = useForm<InitialValuesFromFields<BasicFormFields>>({A: '', B: 'lal', C: '48', D: 'D1', E: 'E1', F: ['F1'], G: ['G1']})
 
     return <>
         <Space>
-            <Form form={form} mergeInChange={mergeInChange}>
+            <Form form={form} onValuesChange={onValuesChange}>
                 {basicFormFieldValues.map(f => <Form.Field {...f}/>)}
                 <div>
                     <Button onClick={() => message.success(JSON.stringify(formValues, null, 4))}>Submit</Button>

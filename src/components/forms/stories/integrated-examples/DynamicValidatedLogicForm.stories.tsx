@@ -10,25 +10,26 @@ const DynamicValidatedFormTemplate: Story = () => {
     const {
         formValues,
         form,
-        mergeInChange,
+        onValuesChange,
         resetForm,
         clearForm,
-        hasErrors
+        hasErrors,
     } = useForm<InitialValuesFromFields<DynamicValidationFormFields>>({})
 
     const formFields = getDynamicValidationFormFieldValues(formValues)
 
     const handleFormChange = (values: Partial<InitialValuesFromFields<DynamicValidationFormFields>>) => {
+
         const currentField = Object.keys(values)[0]
         const validationDependenciesForFieldD = ['A', 'B', 'C']
 
-        mergeInChange(values)
-        if(validationDependenciesForFieldD.includes(currentField)) form.validateFields(['D'])
+        onValuesChange(values)
+        if(validationDependenciesForFieldD.includes(currentField)) form.validateFields(['D']).then()
     }
 
     return <>
         <Space>
-            <Form form={form} mergeInChange={handleFormChange}>
+            <Form form={form} onValuesChange={handleFormChange}>
                 {formFields.map(f => <Form.Field {...f}/>)}
                 <Space size={'large'} direction={'vertical'}>
                     {hasErrors && <Alert type={'error'} message={'Form has errors'} />}
