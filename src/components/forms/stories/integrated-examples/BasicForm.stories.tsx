@@ -19,6 +19,7 @@ const BasicTemplate: Story = () => {
         <Space>
             <Form form={form} onValuesChange={onValuesChange}>
                 {basicFormFieldValues.map(f => <Form.Field {...f}/>)}
+
                 <div>
                     <Button onClick={() => message.success(JSON.stringify(formValues, null, 4))}>Submit</Button>
                     <Button onClick={resetForm}>Reset</Button>
@@ -29,6 +30,7 @@ const BasicTemplate: Story = () => {
         <Card style={{marginTop: '24px'}}>{JSON.stringify(formValues, null, 4)}</Card>
     </>
 }
+
 export const BasicForm = BasicTemplate.bind({});
 
 BasicForm.args = {};

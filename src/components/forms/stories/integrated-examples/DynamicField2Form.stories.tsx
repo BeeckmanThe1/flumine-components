@@ -5,6 +5,7 @@ import {Button, Card, message, Space, Alert} from "antd";
 import {Form} from "../../form";
 import {getDynamicValidationFormFieldValues} from "./basicFormFieldValues";
 import {DynamicValidationFormFields} from "./form.models";
+import {RecursivePartial} from "../../../../utils/typing/RecursivePartial.type";
 
 const DynamicDields2Template: Story = () => {
     const {
