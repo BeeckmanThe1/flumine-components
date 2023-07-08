@@ -1,17 +1,17 @@
 import {Meta, Story} from "@storybook/react";
-import {InitialValuesFromFields} from "../../Form.model";
 import {useForm} from "../../useForm.hook";
 import {Button, Card, Space} from "antd";
 import {Form} from "../../form";
-import {customFormFieldValues} from "./basicFormFieldValues";
+import {customFormFieldValues} from "./custom.fields";
+import {CustomFormValues} from "./custom.model";
 
-const CustomTemplate: Story = () => {
+const RandomInputTemplate: Story = () => {
 
     const {
         formValues,
         form,
         onValuesChange,
-    } = useForm<InitialValuesFromFields<typeof customFormFieldValues>>({A: 12.3456})
+    } = useForm<CustomFormValues>({A: 12.3456})
 
     return <>
         <Space>
@@ -25,16 +25,16 @@ const CustomTemplate: Story = () => {
         <Card style={{marginTop: '24px'}}>{JSON.stringify(formValues, null, 4)}</Card>
     </>
 }
-export const CustomForm = CustomTemplate.bind({});
+export const RandomInputExample = RandomInputTemplate.bind({});
 
-CustomForm.args = {};
-CustomForm.argTypes = {
-    mergeInChange: {table: {disable: true}},
+RandomInputExample.args = {};
+RandomInputExample.argTypes = {
+    onValuesChange: {table: {disable: true}},
     form: {table: {disable: true}},
 };
 
 const meta = {
-    title: 'Form/Custom field example',
+    title: 'Form/Custom fields',
     component: Form,
 } as Meta<typeof Form>;
 export default meta

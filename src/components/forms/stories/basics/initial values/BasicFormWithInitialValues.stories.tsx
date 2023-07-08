@@ -1,25 +1,24 @@
 import {Meta, Story} from "@storybook/react";
-import {InitialValuesFromFields} from "../../Form.model";
-import {useForm} from "../../useForm.hook";
+import {useForm} from "../../../useForm.hook";
 import {Button, Card, message, Space} from "antd";
-import {Form} from "../../form";
-import {basicFormFieldValues} from "./basicFormFieldValues";
-import {BasicFormFields} from "./form.models";
+import {Form} from "../../../form";
+import {basicFormFieldValues} from "../basics.fields";
+import {BasicFormValues} from "../basics.model";
+import {basicFormInitials} from "../basics.initials";
 
-const BasicTemplate: Story = () => {
+const BasicFormWithInitialValuesTemplate: Story = () => {
     const {
         formValues,
         form,
         onValuesChange,
         resetForm,
         clearForm
-    } = useForm<InitialValuesFromFields<BasicFormFields>>({A: '', B: 'lal', C: '48', D: 'D1', E: 'E1', F: ['F1'], G: ['G1']})
+    } = useForm<BasicFormValues>(basicFormInitials)
 
     return <>
         <Space>
             <Form form={form} onValuesChange={onValuesChange}>
                 {basicFormFieldValues.map(f => <Form.Field {...f}/>)}
-
                 <div>
                     <Button onClick={() => message.success(JSON.stringify(formValues, null, 4))}>Submit</Button>
                     <Button onClick={resetForm}>Reset</Button>
@@ -31,16 +30,16 @@ const BasicTemplate: Story = () => {
     </>
 }
 
-export const BasicForm = BasicTemplate.bind({});
+export const BasicFormWithInitialValues = BasicFormWithInitialValuesTemplate.bind({});
 
-BasicForm.args = {};
-BasicForm.argTypes = {
-    mergeInChange: {table: {disable: true}},
+BasicFormWithInitialValues.args = {};
+BasicFormWithInitialValues.argTypes = {
+    onValuesChange: {table: {disable: true}},
     form: {table: {disable: true}},
 };
 
 const meta = {
-    title: 'Form/Integrated example',
+    title: 'Form/Basics',
     component: Form,
 } as Meta<typeof Form>;
 export default meta

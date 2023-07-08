@@ -1,10 +1,10 @@
 import {Meta, Story} from "@storybook/react";
-import {InitialValuesFromFields} from "../../Form.model";
-import {useForm} from "../../useForm.hook";
+import {useForm} from "../../../useForm.hook";
 import {Button, Card, message, Space, Alert} from "antd";
-import {Form} from "../../form";
-import {validatedFormFieldValues} from "./basicFormFieldValues";
-import {BasicFormFields} from "./form.models";
+import {Form} from "../../../form";
+import {BasicFormValues} from "../basics.model";
+import {validatedFormFieldValues} from "../basics.fields";
+import {basicFormInitials} from "../basics.initials";
 
 const ValidatedFormTemplate: Story = () => {
     const {
@@ -14,7 +14,7 @@ const ValidatedFormTemplate: Story = () => {
         resetForm,
         clearForm,
         hasErrors
-    } = useForm<InitialValuesFromFields<BasicFormFields>>({A: '', B: '', C: 48, D: 'D1', E: 'E1', F: ['F1', 'WHY IS THIS ALLOWED?'], G: ['G1']})
+    } = useForm<BasicFormValues>(basicFormInitials)
 
     return <>
         <Space>
@@ -35,16 +35,16 @@ const ValidatedFormTemplate: Story = () => {
         <Card style={{marginTop: '24px'}}>{JSON.stringify(formValues, null, 4)}</Card>
     </>
 }
-export const RequiredFormFields = ValidatedFormTemplate.bind({});
+export const BasicFormWithValidation = ValidatedFormTemplate.bind({});
 
-RequiredFormFields.args = {};
-RequiredFormFields.argTypes = {
-    mergeInChange: {table: {disable: true}},
+BasicFormWithValidation.args = {};
+BasicFormWithValidation.argTypes = {
+    onValuesChange: {table: {disable: true}},
     form: {table: {disable: true}},
 };
 
 const meta = {
-    title: 'Form/Validation examples',
+    title: 'Form/Basics',
     component: Form,
 } as Meta<typeof Form>;
 export default meta

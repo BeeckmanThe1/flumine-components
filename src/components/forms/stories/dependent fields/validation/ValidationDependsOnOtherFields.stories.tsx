@@ -1,12 +1,11 @@
 import {Meta, Story} from "@storybook/react";
-import {InitialValuesFromFields} from "../../Form.model";
-import {useForm} from "../../useForm.hook";
+import {useForm} from "../../../useForm.hook";
 import {Button, Card, message, Space, Alert} from "antd";
-import {Form} from "../../form";
-import {getDynamicValidationFormFieldValues} from "./basicFormFieldValues";
-import {DynamicValidationFormFields} from "./form.models";
+import {Form} from "../../../form";
+import {getDynamicValidationFormFieldValues} from "./validationDependsOnOtherField.fields.utils";
+import {DynamicValidationFormValues} from "./validationDependsOnOtherField.models";
 
-const DynamicValidatedFormTemplate: Story = () => {
+const ValidationDependsOnOtherFieldsTemplate: Story = () => {
     const {
         formValues,
         form,
@@ -14,12 +13,11 @@ const DynamicValidatedFormTemplate: Story = () => {
         resetForm,
         clearForm,
         hasErrors,
-    } = useForm<InitialValuesFromFields<DynamicValidationFormFields>>({})
+    } = useForm<DynamicValidationFormValues>({})
 
     const formFields = getDynamicValidationFormFieldValues(formValues)
 
-    const handleFormChange = (values: Partial<InitialValuesFromFields<DynamicValidationFormFields>>) => {
-
+    const handleFormChange = (values: Partial<DynamicValidationFormValues>) => {
         const currentField = Object.keys(values)[0]
         const validationDependenciesForFieldD = ['A', 'B', 'C']
 
@@ -46,16 +44,16 @@ const DynamicValidatedFormTemplate: Story = () => {
         <Card style={{marginTop: '24px'}}>{JSON.stringify(formValues, null, 4)}</Card>
     </>
 }
-export const DynamicallyValidatedForm = DynamicValidatedFormTemplate.bind({});
+export const ValidationDependsOnOtherFields = ValidationDependsOnOtherFieldsTemplate.bind({});
 
-DynamicallyValidatedForm.args = {};
-DynamicallyValidatedForm.argTypes = {
-    mergeInChange: {table: {disable: true}},
+ValidationDependsOnOtherFields.args = {};
+ValidationDependsOnOtherFields.argTypes = {
+    onValuesChange: {table: {disable: true}},
     form: {table: {disable: true}},
 };
 
 const meta = {
-    title: 'Form/Validation examples',
+    title: 'Form/Dependent fields',
     component: Form,
 } as Meta<typeof Form>;
 export default meta

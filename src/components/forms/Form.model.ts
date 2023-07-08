@@ -20,9 +20,7 @@ export type FieldMapper<N extends FieldName> = {
         fieldProps: Pick<AntdFormItemProps, 'label' | 'rules'>
     }
 }
-
 export type Field<N extends FieldName> = FieldMapper<N>[FormFields]
-
 export type FieldProps<T> = {
     value: T
     onChange: (x: T) => void
