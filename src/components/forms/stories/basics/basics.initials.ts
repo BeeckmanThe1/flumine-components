@@ -6,6 +6,6 @@ export const basicFormInitials: BasicFormValues = {
     C: '48',
     D: 'D1',
     E: 'E1',
-    F: ['F1', 'WHY IS THIS ALLOWED?'],
+    F: ['F1'],
     G: ['G1']
 }
