@@ -1,6 +1,6 @@
 import {Meta, Story} from "@storybook/react";
 import {useForm} from "../../../useForm.hook";
-import {Button, Card, message, Space, Alert} from "antd";
+import {Button, Card, message, Space} from "antd";
 import {Form} from "../../../form";
 import {calculateFormChange} from "./valueDependsOnOtherFields.utils";
 import {valueDependsOnOtherFieldFields} from "./valueDependsOnOtherFields.fields";
@@ -12,8 +12,7 @@ const ValueDependsOnOtherFieldsTemplate: Story = () => {
         form,
         onValuesChange,
         resetForm,
-        clearForm,
-        hasErrors
+        clearForm
     } = useForm<ValueDependsOnOtherFieldFieldsFormValues>({})
 
     const handleFormChange = (formChange: Partial<ValueDependsOnOtherFieldFieldsFormValues>) => {
@@ -26,10 +25,8 @@ const ValueDependsOnOtherFieldsTemplate: Story = () => {
             <Form form={form} onValuesChange={handleFormChange}>
                 {valueDependsOnOtherFieldFields.map(f => <Form.Field {...f}/>)}
                 <Space size={'large'} direction={'vertical'}>
-                    {hasErrors && <Alert type={'error'} message={'Form has errors'} />}
-
                     <Space direction={'horizontal'}>
-                        <Button htmlType={'submit'} disabled={hasErrors} onClick={() => message.success(JSON.stringify(formValues, null, 4))}>Submit</Button>
+                        <Button htmlType={'submit'} onClick={() => message.success(JSON.stringify(formValues, null, 4))}>Submit</Button>
                         <Button onClick={resetForm}>Reset</Button>
                         <Button onClick={clearForm}>Clear</Button>
                         <Button onClick={() => form.validateFields()}>Trigger form validation</Button>

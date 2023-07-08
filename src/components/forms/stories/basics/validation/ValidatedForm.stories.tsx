@@ -1,6 +1,6 @@
 import {Meta, Story} from "@storybook/react";
 import {useForm} from "../../../useForm.hook";
-import {Button, Card, message, Space, Alert} from "antd";
+import {Button, Card, message, Space} from "antd";
 import {Form} from "../../../form";
 import {BasicFormValues} from "../basics.model";
 import {validatedFormFieldValues} from "../basics.fields";
@@ -12,8 +12,7 @@ const ValidatedFormTemplate: Story = () => {
         form,
         onValuesChange,
         resetForm,
-        clearForm,
-        hasErrors
+        clearForm
     } = useForm<BasicFormValues>(basicFormInitials)
 
     return <>
@@ -21,8 +20,6 @@ const ValidatedFormTemplate: Story = () => {
             <Form form={form} onValuesChange={onValuesChange}>
                 {validatedFormFieldValues.map(f => <Form.Field {...f}/>)}
                 <Space size={'large'} direction={'vertical'}>
-                    {hasErrors && <Alert type={'error'} message={'Form has errors'} />}
-
                     <Space direction={'horizontal'}>
                         <Button htmlType={'submit'} onClick={() => message.success(JSON.stringify(formValues, null, 4))}>Submit</Button>
                         <Button onClick={resetForm}>Reset</Button>

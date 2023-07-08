@@ -16,8 +16,8 @@ export const useForm = <T extends object>(initialValues: Partial<T>) => {
     const allErrors = form.getFieldsError()?.flatMap(e => e?.errors)
     const hasErrors = allErrors?.length > 0
 
-    const onValuesChange = (values: Partial<T>) => {
-        setFormValues(prev => ({...prev || {}, ...values || {}}))
+    const onValuesChange = (formChange: Partial<T>) => {
+        setFormValues(prev => ({...prev || {}, ...formChange || {}}))
     }
 
     useEffect(() => {
@@ -25,7 +25,7 @@ export const useForm = <T extends object>(initialValues: Partial<T>) => {
         const newClearedValues = allFields.reduce((reduced, current) => ({...reduced, [current]: null}), {})
 
         setClearedValues(newClearedValues as T)
-    }, [])
+    }, [form])
 
     /*
     * This is an example of how the useEffect hook is typically used: to synchronize our own state with third-party
@@ -42,7 +42,7 @@ export const useForm = <T extends object>(initialValues: Partial<T>) => {
         if (stateIsAlreadySynced) return
 
         form.setFieldsValue({...clearedValues, ...formValues} as RecursivePartial<T>)
-    }, [formValues])
+    }, [formValues, clearedValues, form])
 
     return {
         form,
