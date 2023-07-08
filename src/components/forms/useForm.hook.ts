@@ -5,7 +5,7 @@ import _isEqual from 'lodash/isEqual'
 
 export const useForm = <T extends object>(initialValues: Partial<T>) => {
     const [form] = Form.useForm<T>()
-    const [formValues, setFormValues] = useState<Partial<T>>(initialValues)
+    const [formValues, setFormValues] = useState<Partial<T>>({})
     const [clearedValues, setClearedValues] = useState<Partial<T>>({})
 
     const resetForm = () => {
@@ -20,6 +20,11 @@ export const useForm = <T extends object>(initialValues: Partial<T>) => {
         setFormValues(prev => ({...prev || {}, ...formChange || {}}))
     }
 
+    useEffect(() => {
+        if(initialValues === undefined) return
+
+        setFormValues(initialValues)
+    },[initialValues])
     useEffect(() => {
         const allFields = Object.keys(form.getFieldsValue()) || []
         const newClearedValues = allFields.reduce((reduced, current) => ({...reduced, [current]: null}), {})

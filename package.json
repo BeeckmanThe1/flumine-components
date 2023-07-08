@@ -13,11 +13,13 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@tanstack/react-query": "^4.29.19",
     "antd": "^5.6.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@jest/types": "^29.6.1",
     "@storybook/addon-essentials": "7.0.20",
     "@storybook/addon-interactions": "7.0.20",
     "@storybook/addon-links": "7.0.20",
@@ -26,6 +28,7 @@
     "@storybook/react": "7.0.20",
     "@storybook/react-vite": "7.0.20",
     "@storybook/testing-library": "0.0.14-next.2",
+    "@types/jest": "^29.5.2",
     "@types/react": "^18.0.37",
     "@types/react-dom": "^18.0.11",
     "@typescript-eslint/eslint-plugin": "^5.59.0",
@@ -35,6 +38,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.3.4",
     "eslint-plugin-storybook": "^0.6.12",
+    "jest": "^29.6.1",
     "prop-types": "15.8.1",
     "storybook": "7.0.20",
     "typescript": "^5.0.2",
