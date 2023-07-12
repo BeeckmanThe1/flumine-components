@@ -14,7 +14,7 @@ const ValidationDependsOnOtherFieldsTemplate: Story = () => {
         clearForm
     } = useForm<DynamicValidationFormValues>()
 
-    const formFields = getDynamicValidationFormFieldValues(formValues)
+    const formFields = getDynamicValidationFormFieldValues(formValues || {})
 
     const handleFormChange = (formChange: Partial<DynamicValidationFormValues>) => {
         const currentField = Object.keys(formChange)[0]
