@@ -4,8 +4,8 @@ import {
 } from 'antd'
 import {FC} from "react";
 import {KeyValue} from "../../../../utils/typing/KeyValue.type";
-import {FieldProps} from "../../Form.model";
 import {CheckboxValueType} from "antd/es/checkbox/Group";
+import {FieldProps} from "../../Form.model";
 
 export type CheckboxProps = {
     items: (KeyValue & Pick<AntdCheckboxProps, 'disabled' | 'defaultChecked' | 'value'>)[]

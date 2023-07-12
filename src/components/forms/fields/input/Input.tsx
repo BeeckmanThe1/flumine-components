@@ -8,6 +8,6 @@ export type InputProps = {
 
 type InputType = FC<InputProps & FieldProps<string>>
 
-export const Input: InputType = (props) => {
-    return <AntdInput {...props}/>
+export const Input: InputType = (rest) => {
+    return <AntdInput {...rest}/>
 }
