@@ -5,14 +5,13 @@ import {Form} from "../../form";
 import {customFormFieldValues} from "./custom.fields";
 import {CustomFormValues} from "./custom.model";
 
+const initial = {A: 12.3456}
 const RandomInputTemplate: Story = () => {
-
     const {
         formValues,
         form,
         onValuesChange,
-    } = useForm<CustomFormValues>({A: 12.3456})
-
+    } = useForm<CustomFormValues>(initial)
     return <>
         <Space>
             <Form form={form} onValuesChange={onValuesChange}>

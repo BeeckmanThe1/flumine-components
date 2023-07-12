@@ -12,7 +12,7 @@ const ValidationDependsOnOtherFieldsTemplate: Story = () => {
         onValuesChange,
         resetForm,
         clearForm
-    } = useForm<DynamicValidationFormValues>({})
+    } = useForm<DynamicValidationFormValues>()
 
     const formFields = getDynamicValidationFormFieldValues(formValues)
 

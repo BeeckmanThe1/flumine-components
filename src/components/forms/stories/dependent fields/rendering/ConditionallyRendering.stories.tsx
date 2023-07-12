@@ -14,13 +14,13 @@ const ConditionallyRenderingTemplate: Story = () => {
         onValuesChange,
         resetForm,
         clearForm
-    } = useForm<ConditionallyRenderingFormFields>({})
+    } = useForm<ConditionallyRenderingFormFields>()
 
     return <>
         <Space>
             <Form form={form} onValuesChange={onValuesChange}>
                 <Form.Field {...conditionallyRenderingFields[0]}/>
-                { formValues.A ? <Form.Field {...conditionallyRenderingFields[1]}/> : null}
+                { formValues?.A ? <Form.Field {...conditionallyRenderingFields[1]}/> : null}
                 <div>
                     <Button onClick={() => message.success(JSON.stringify(formValues, null, 4))}>Submit</Button>
                     <Button onClick={resetForm}>Reset</Button>

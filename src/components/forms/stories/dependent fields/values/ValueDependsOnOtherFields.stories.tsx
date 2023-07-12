@@ -13,7 +13,7 @@ const ValueDependsOnOtherFieldsTemplate: Story = () => {
         onValuesChange,
         resetForm,
         clearForm
-    } = useForm<ValueDependsOnOtherFieldFieldsFormValues>({})
+    } = useForm<ValueDependsOnOtherFieldFieldsFormValues>()
 
     const handleFormChange = (formChange: Partial<ValueDependsOnOtherFieldFieldsFormValues>) => {
         const calculatedFormChange = calculateFormChange(formChange, formValues)

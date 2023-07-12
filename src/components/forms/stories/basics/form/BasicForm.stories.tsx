@@ -12,7 +12,7 @@ const BasicTemplate: Story = () => {
         onValuesChange,
         resetForm,
         clearForm
-    } = useForm<BasicFormValues>({})
+    } = useForm<BasicFormValues>()
 
     return <>
         <Space>

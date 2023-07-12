@@ -1,5 +1,6 @@
 import {FormValues} from "./model";
 import {useQuery} from '@tanstack/react-query'
+
 const awaitTimeout = <T>(delay: number, value: T): Promise<T> =>
     new Promise((resolve) =>
         setTimeout(
@@ -23,10 +24,9 @@ export const initialValues: FormValues = {
 export const useFetchInitials = () => useQuery<FormValues, Error, FormValues>({
     queryKey: ['initials'],
     queryFn: () => awaitTimeout(0, initialValues)
-
 })
 export const useFetchOptions = () => useQuery<typeof options, Error, typeof options>({
     queryKey: ['options'],
-    queryFn: () => awaitTimeout(3000, options)
+    queryFn: () => awaitTimeout(1000, options)
 })
 
