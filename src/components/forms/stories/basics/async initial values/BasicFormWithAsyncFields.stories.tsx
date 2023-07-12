@@ -10,7 +10,7 @@ import {
 } from '@tanstack/react-query'
 import {formFields} from "../../../fields/FieldComponentMapper";
 
-const Test = () => {
+const QueryClientProvidedStory = () => {
     const {data: initials} = useFetchInitials()
     const {data: options} = useFetchOptions()
 
@@ -75,9 +75,8 @@ const BasicFormWithInitialValuesTemplate: Story = () => {
         queries: {
             staleTime: bigTime, cacheTime: bigTime, refetchOnMount: false, retry: 0, keepPreviousData: true, retryDelay: 0, refetchOnWindowFocus: false
         }}})
-    console.log('rendering ROOT')
     return <QueryClientProvider client={queryClient}>
-            <Test/>
+            <QueryClientProvidedStory/>
     </QueryClientProvider>
 }
 

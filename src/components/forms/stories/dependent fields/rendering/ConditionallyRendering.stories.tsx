@@ -35,7 +35,7 @@ export const ConditionallyRendering = ConditionallyRenderingTemplate.bind({});
 
 ConditionallyRendering.args = {};
 ConditionallyRendering.argTypes = {
-    mergeInChange: { table: { disable: true } },
+    onValuesChange: { table: { disable: true } },
     form: { table: { disable: true } },
 };
 const meta = {

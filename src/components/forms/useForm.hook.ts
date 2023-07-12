@@ -37,8 +37,6 @@ export const useForm = <T extends object>(initialValues?: Partial<T>) => {
         const stateIsAlreadySynced = _isEqual(form.getFieldsValue(), formValues)
         if (stateIsAlreadySynced) return
 
-        console.log('lala³')
-
         form.setFieldsValue({...clearedValues, ...formValues} as RecursivePartial<T>)
     }, [formValues])
 
