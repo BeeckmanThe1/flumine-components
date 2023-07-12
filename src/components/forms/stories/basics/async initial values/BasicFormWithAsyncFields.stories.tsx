@@ -20,7 +20,7 @@ const Test = () => {
         onValuesChange,
         resetForm,
         clearForm
-    } = useForm<FormValues>(initials || {})
+    } = useForm<FormValues>(initials)
 
     const fields: Fields = [
         {
@@ -70,7 +70,12 @@ const Test = () => {
 }
 
 const BasicFormWithInitialValuesTemplate: Story = () => {
-    const queryClient = new QueryClient()
+    const bigTime = 100000
+    const queryClient = new QueryClient({defaultOptions: {
+        queries: {
+            staleTime: bigTime, cacheTime: bigTime, refetchOnMount: false, retry: 0, keepPreviousData: true, retryDelay: 0, refetchOnWindowFocus: false
+        }}})
+    console.log('rendering ROOT')
     return <QueryClientProvider client={queryClient}>
             <Test/>
     </QueryClientProvider>
