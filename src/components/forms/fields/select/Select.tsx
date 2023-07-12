@@ -11,7 +11,7 @@ export type SelectProps = {
 type SelectType = FC<SelectProps & FieldProps<KeyValue['key'] | KeyValue['key'][]>>
 
 export const Select: SelectType = ({items, value, ...rest}) => {
-    return <AntdSelect value={value} {...rest}>
+    return <AntdSelect value={value ?? undefined} {...rest}>
         {items.map(i => <AntdSelect.Option value={i.key}>
                 <Tooltip title={i.value}>
                     <Typography.Text ellipsis>{i.value}</Typography.Text>

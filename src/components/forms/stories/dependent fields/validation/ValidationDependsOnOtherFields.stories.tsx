@@ -20,7 +20,10 @@ const ValidationDependsOnOtherFieldsTemplate: Story = () => {
         const currentField = Object.keys(formChange)[0]
         const validationDependenciesForFieldD = ['A', 'B', 'C']
 
+        console.log('test', form.getFieldsValue())
+
         onValuesChange(formChange)
+
         if(validationDependenciesForFieldD.includes(currentField)) form.validateFields(['D'])
     }
 

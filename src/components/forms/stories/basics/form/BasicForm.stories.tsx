@@ -17,7 +17,7 @@ const BasicTemplate: Story = () => {
     return <>
         <Space>
             <Form form={form} onValuesChange={onValuesChange}>
-                {basicFormFieldValues.map(f => <Form.Field<typeof f.type> {...f}/>)}
+                {basicFormFieldValues.map(f => <Form.Field {...f}/>)}
 
                 <div>
                     <Button onClick={() => message.success(JSON.stringify(formValues, null, 4))}>Submit</Button>
