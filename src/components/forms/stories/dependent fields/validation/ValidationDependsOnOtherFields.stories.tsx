@@ -21,7 +21,7 @@ const ValidationDependsOnOtherFieldsTemplate: Story = () => {
         const validationDependenciesForFieldD = ['A', 'B', 'C']
 
         onValuesChange(formChange)
-        if(validationDependenciesForFieldD.includes(currentField)) form.validateFields(['D']).then()
+        if(validationDependenciesForFieldD.includes(currentField)) form.validateFields(['D'])
     }
 
     return <>

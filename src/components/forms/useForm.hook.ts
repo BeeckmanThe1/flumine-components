@@ -7,7 +7,7 @@ import {useInitialize} from "../../utils/hooks/useInitialize.utils";
 export const useForm = <T extends object>(initialValues?: Partial<T>) => {
     const [form] = Form.useForm<T>()
     const [formValues, setFormValues] = useState<Partial<T> | undefined>({})
-    const allFields = Object.keys(initialValues || {}) || []
+    const allFields = Object.keys(form.getFieldsValue() || {}) || []
     const clearedValues = allFields.reduce((reduced, current) => ({...reduced, [current]: null}), {})
 
     useInitialize<typeof initialValues>(initialValues, setFormValues)
